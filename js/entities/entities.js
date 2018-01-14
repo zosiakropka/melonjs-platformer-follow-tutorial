@@ -6,15 +6,21 @@ game.PlayerEntity = me.Entity.extend({
     /**
      * constructor
      */
-    init:function (x, y, settings) {
+    init: function (x, y, settings) {
         // call the constructor
         this._super(me.Entity, 'init', [x, y , settings]);
+        this.renderable.addAnimation('stand', [0]);
+
+        this.renderable.setCurrentAnimation('stand');
     },
 
     /**
      * update the entity
      */
-    update : function (dt) {
+    update: function (dt) {
+        if (!this.renderable.isCurrentAnimation('stand')) {
+            this.renderable.setCurrentAnimation('stand');
+        }
 
         // apply physics to the body (this moves the entity)
         this.body.update(dt);
