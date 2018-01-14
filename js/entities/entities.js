@@ -68,6 +68,12 @@ game.PlayerEntity = me.Entity.extend({
      * (called when colliding with other objects)
      */
     onCollision : function (response, other) {
+        if (other.body.collisionType === me.collision.types.WORLD_SHAPE) {
+            if (other.type === 'platform') {
+                return !!this.body.falling;
+            }
+        }
+
         // Make all other objects solid
         return true;
     }
