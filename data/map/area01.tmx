@@ -52,6 +52,7 @@
  <objectgroup name="enemies">
   <object id="42" name="EnemyEntity" x="288" y="288" width="320" height="64">
    <properties>
+    <property name="anchorPoint" value="json:{&quot;x&quot;:0.5,&quot;y&quot;:0}"/>
     <property name="image" value="wheelie_right"/>
    </properties>
   </object>
