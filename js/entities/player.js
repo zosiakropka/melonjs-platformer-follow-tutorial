@@ -84,6 +84,17 @@ game.PlayerEntity = me.Entity.extend({
                     return false;
                 }
                 break;
+            case me.collision.types.ENEMY_OBJECT:
+                if ((response.overlapV.y>0) && !this.body.jumping) {
+                  this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
+                  // this.body.jumping = true;
+                }
+                else if (!this.body.falling) {
+                  this.renderable.flicker(750);
+                }
+
+            default:
+                return false;
         }
 
         // Make all other objects solid
