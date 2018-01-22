@@ -73,6 +73,7 @@ game.PlayerEntity = me.Entity.extend({
                 if (other.type === 'platform') {
                     if (
                         this.body.falling &&
+                        !me.input.isKeyPressed('down') &&
                         response.overlapV.y > 0 &&
                         (~~this.body.vel.y >= ~~response.overlapV.y)) {
 
