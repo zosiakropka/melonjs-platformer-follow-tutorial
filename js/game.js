@@ -32,10 +32,12 @@ var game = {
 
         // add our player entity in the entity pool
         me.pool.register("mainPlayer", game.PlayerEntity);
+        me.pool.register("enemy", game.PathEnemyEntity);
 
         me.input.bindKey(me.input.KEY.LEFT, 'left');
         me.input.bindKey(me.input.KEY.RIGHT, 'right');
         me.input.bindKey(me.input.KEY.UP, 'jump');
+        me.input.bindKey(me.input.KEY.SPACE, 'fight', false);
 
         // Start the game.
         me.state.change(me.state.PLAY);
