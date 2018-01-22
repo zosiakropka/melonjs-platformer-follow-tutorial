@@ -1,5 +1,7 @@
 game.CoinEntity = me.CollectableEntity.extend({
   onCollision: function () {
+    me.audio.play('cling');
+
     game.data.score += game.CoinEntity.COIN_VALUE;
 
     this.body.setCollisionMask(me.collision.types.NO_OBJECT);

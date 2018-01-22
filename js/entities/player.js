@@ -50,6 +50,7 @@ game.PlayerEntity = me.Entity.extend({
             if (!this.body.jumping && !this.body.falling) {
                 this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
                 this.body.jumping = true;
+                me.audio.play('jump');
             }
         }
 
@@ -89,6 +90,7 @@ game.PlayerEntity = me.Entity.extend({
                 break;
             case me.collision.types.ENEMY_OBJECT:
                 if ((response.overlapV.y>0) && !this.body.jumping) {
+                  me.audio.play("stomp")
                   this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
                   // this.body.jumping = true;
                 }

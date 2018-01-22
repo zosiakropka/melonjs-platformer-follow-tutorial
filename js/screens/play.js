@@ -3,6 +3,7 @@ game.PlayScreen = me.ScreenObject.extend({
      *  action to perform on state change
      */
     onResetEvent: function() {
+      me.audio.playTrack('dst-inertexponent');
       me.levelDirector.loadLevel('area01');
 
       // reset the score
@@ -18,6 +19,7 @@ game.PlayScreen = me.ScreenObject.extend({
      *  action to perform when leaving this screen (state change)
      */
     onDestroyEvent: function() {
+        me.audio.stopTrack()
         // remove the HUD from the game world
         me.game.world.removeChild(this.HUD);
     }
