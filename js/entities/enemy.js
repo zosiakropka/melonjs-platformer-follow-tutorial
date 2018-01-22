@@ -18,9 +18,16 @@ game.EnemyEntity = me.Entity.extend({
     this.walkLeft = false;
 
     this.body.setVelocity(4, 6);
+
+    this.hitPoints = game.EnemyEntity.HIT_POINTS;
   },
 
   update: function(dt) {
+    if (!this.hitPoints) {
+      this.body.setCollisionMask(me.collision.types.NO_OBJECT);
+      me.game.world.removeChild(this);
+    }
+
     if (this.walkLeft && this.pos.x <= this.startX) {
       this.walkLeft = false;
     } else if (!this.walkLeft && this.pos.x >= this.endX) {
@@ -47,7 +54,10 @@ game.EnemyEntity = me.Entity.extend({
 
     if (response.overlapV.y > 0 && response.a.body.falling) {
       this.renderable.flicker(750);
+      this.hitPoints -= 1;
     }
     return false;
   }
 });
+
+game.EnemyEntity.HIT_POINTS = 2;
